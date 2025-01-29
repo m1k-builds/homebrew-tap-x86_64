@@ -1,6 +1,6 @@
 cask "pixelpulse2" do
     version "pp2-libsmu-1.0.4-2025-01-29"
-    sha256 "2eccad1b28b65a5f5887f3f14dc7cc2cf86a5f0367dbf7b0ae6646d034d9e33f" # Replace with your PKG's SHA-256 hash
+    sha256 "3ee9e998d6caa0a3aae09681381aa25d18c8cd77e2aaa080971c472aab09d0d6" # Replace with your PKG's SHA-256 hash
   
     url "https://github.com/m1k-builds/Pixelpulse2-macOS/releases/latest/download/pp2-x86_64.zip"
     name "Pixelpulse2"
@@ -9,5 +9,9 @@ cask "pixelpulse2" do
   
     app "pixelpulse2.app"
     uninstall pkgutil: "com.analogdevicesinc.pixelpulse2"
+
+    def post_install
+        system "codesign", "--sign", "-", Contents/MacOS/pixelpulse2
+    end
   end
   
